@@ -1,0 +1,27 @@
+@charset "UTF-8";
+//混合库
+@import "mixins/cjj";
+//变量
+@import "mixins/variable";
+//公共
+@import "public/topNav";
+//主样式
+section {
+	padding: 10px 0 100px;
+}
+#topBar {
+	.container-fluid {
+		background-image: url("./../img/service-bg.jpg");
+	}
+}
+section {
+	.title{
+		font-size: 30px;
+		font-weight: 500;
+		padding-bottom: 10px;
+		margin: 40px 0 20px;
+		color: $main;
+		border-bottom: 1px solid #cccccc;
+		text-indent: 2em;
+	}
+}

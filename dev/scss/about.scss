@@ -1,0 +1,248 @@
+@charset "UTF-8";
+//混合库
+@import "mixins/cjj";
+//变量
+@import "mixins/variable";
+//公共
+@import "public/topNav";
+//主样式
+//页头图
+section {
+	padding: 10px 0 100px;
+}
+#topBar {
+	.container-fluid {
+		background-image: url("./../img/about-bg.jpg");
+	}
+}
+//公司简介
+section.intro {
+	.video-box {
+		position: relative;
+		cursor: pointer;
+		width: 50%;
+		video {
+			width: 100%;
+			min-width: 200px;
+		}
+		.ctrl-btn {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 64px;
+			height: 64px;
+			margin-top: -32px;
+			margin-left: -32px;
+			background: no-repeat center center;
+			&.play {
+				background-image: url(./../img/play.png);
+			}
+			&.pause {
+				background-image: url(./../img/pause.png);
+			}
+		}
+		.ctrl-info {
+			padding: 15px 80px 15px 100px;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			margin-left: -50%;
+			background-color: rgba(255, 255, 255, .6);
+			.progress {
+				height: 12px;
+				margin-bottom: 0;
+			}
+			.time {
+				position: absolute;
+				left: 15px;
+				top: 12px;
+				font-size: 12px;
+			}
+			.volume {
+				position: absolute;
+				right: 30px;
+				top: 12px;
+			}
+		}
+	}
+	p {
+		margin-top: 20px;
+		line-height: 30px;
+		text-indent: 2em;
+		.text-main {
+			color: $main;
+			font-size: 1.1em;
+			padding: 0 2px;
+		}
+	}
+}
+//发展历程
+section.course {
+	.course-item {
+		padding-bottom: 30px;
+		padding-left: 400px;
+		position: relative;
+		@include transition5;
+		.year {
+			position: absolute;
+			left: 200px;
+			top: 10px;
+			font-size: 30px;
+			font-weight: 700;
+			color: $main;
+			@include transition5;
+		}
+		.foot {
+			position: absolute;
+			left: 300px;
+			@include transition5;
+		}
+		p {
+			padding: 5px 0;
+			line-height: 25px;
+		}
+		@media (max-width: 992px) {
+			padding-left: 300px;
+			.year {
+				left: 80px;
+				font-size: 26px;
+			}
+			.foot {
+				left: 200px;
+			}
+		}
+		@media (max-width: 850px) {
+			padding-left: 200px;
+			.year {
+				left: 50px;
+				font-size: 20px;
+			}
+			.foot {
+				left: 150px;
+			}
+			p {
+				font-size: 14px;
+			}
+		}
+
+	}
+}
+//荣誉资质
+section.ability {
+	.row {
+		li {
+			text-align: center;
+			cursor: pointer;
+			@include transition3;
+			p {
+				background-color: rgba(0, 0, 0, .1);
+				font-size: 14px;
+				padding: 10px 0;
+				@include transition3;
+			}
+			&:hover {
+				p {
+					background-color: $main;
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+//员工活动
+section.recreation {
+	@extend section.ability
+}
+//联系我们
+section.contact {
+	//百度地图
+	.map {
+		position: static;
+		width:697px;
+		height:550px;
+		margin-bottom: 30px	;
+		overflow: hidden;
+		@include transition5;
+		>div {
+			width: 100%;
+			height: 100%;
+			border:#ccc solid 1px;
+			@include transition5;
+		}
+		.iw_poi_title {
+			color: #CC5522;
+			font-size: 14px;
+			font-weight: bold;
+			overflow: hidden;
+			padding-right: 13px;
+			white-space: nowrap
+		}
+		.iw_poi_content {
+			font: 12px arial, sans-serif;
+			overflow: visible;
+			padding-top: 4px;
+			white-space: -moz-pre-wrap;
+			word-wrap: break-word
+		}
+	}
+	.sz-address {
+		border-bottom: 2px solid #ccc;
+		.title {
+			color: $main;
+			font-weight: 600;
+			font-size: 18px;
+			padding-bottom: 10px;
+		}
+		li {
+			color: #666;
+			margin-bottom: 10px;
+		}
+	}
+	.address {
+		dt {
+			color: $main;
+			padding: 20px 10px;
+			font-size: 18px;
+			@include transition3;
+		}
+		dd {
+			address {
+				height: 140px;
+				border-bottom: 1px solid #ccc;
+				color: #666;
+				@include transition3;
+				strong {
+					color: #000;
+					font-size: 16px;
+					line-height: 30px;
+					font-weight: 600;
+				}
+			}
+		}
+	}
+	@media (max-width: 850px) {
+		.address {
+			dt {
+				font-size: 16px;
+			}
+			dd {
+				address {
+					height: 120px;
+					font-size: 12px;
+					strong {
+						font-size: 14px;
+						line-height: 20px;
+					}
+				}
+			}
+		}
+	}
+	@media (max-width: 768px) {
+		.map {
+			width: 80%;
+			height: 300px
+		}
+	}
+}
+

@@ -1,0 +1,76 @@
+@charset "UTF-8";
+//混合库
+@import "mixins/cjj";
+//变量
+@import "mixins/variable";
+//公共
+@import "public/topNav";
+//主样式
+#topBar {
+	.container-fluid {
+		background: url("./../img/job-bg.jpg") no-repeat center center;
+	}
+}
+section {
+	padding: 10px 0 100px;
+	.list-group{
+		.list-group-item-main{
+			background-color: $main;
+			color: #fff;
+			font-size: 18px;
+			font-weight: 600;
+			cursor: default;
+		}
+		dt{
+			border: none;
+			margin-top: 10px;
+			background-color: #eee;
+			position: relative;
+			cursor: pointer;
+			span{
+				display: inline-block;
+				width: 19%;
+				text-align: center;
+			}
+			.glyphicon{
+				width: 16px;
+				position: absolute;
+				right: 20px;
+				top: 12px;
+			}
+		}
+		dd{
+			background-color: #fff;
+			height: 0;
+			overflow: hidden;
+			@include transition3;
+		}
+		.desc{
+			color: $main;
+			font-size: 14px;
+			padding:0 10%;
+			margin-bottom: 20px;
+			.title{
+				font-size: 16px;
+				margin: 20px 0;
+
+			}
+		}
+	}
+
+}
+section.welfare,
+section.develop{
+	.title {
+		color: $main;
+		margin: 10px 0;
+		font-size: 18px;
+		font-weight: 600;
+	}
+	p{
+		font-size: 16px;
+		line-height: 38px;
+		color: #3c3c3c;
+	}
+
+}

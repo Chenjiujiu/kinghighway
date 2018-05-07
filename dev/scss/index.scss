@@ -1,0 +1,551 @@
+@charset "UTF-8";
+//混合库
+@import "mixins/cjj";
+//变量
+@import "mixins/variable";
+//主样式
+//页面公共
+body,
+html {
+	height: 100%;
+	position: relative;
+	@include transition10;
+}
+section{
+	position: relative;
+}
+.keyword {
+	padding: 0 5px;
+	font-size: 1.2em;
+	color: $main;
+	font-style: italic;
+	font-weight: bold;
+}
+//顶部导航
+.nav-khw {
+	background-color: rgba(0, 0, 0, .4);
+	border: none;
+	text-align: center;
+	@include transition5;
+	.navbar-header {
+		.navbar-toggle {
+			margin-top: 20px;
+			border: transparent;
+			padding: 12px 15px;
+			@include transition3;
+			.icon-bar {
+				background-color: #fff;
+			}
+			&:hover {
+				background-color: rgba(255, 255, 255, .2);
+			}
+			&:focus {
+				@extend :hover
+			}
+		}
+		.navbar-brand {
+			height: auto;
+			@include transition5;
+			img {
+				height: 50px;
+				@include transition5;
+			}
+		}
+	}
+	.navbar-collapse {
+		border: none;
+	}
+	.navbar-center {
+		margin-top: 30px;
+		text-align: center;
+		@include transition5;
+		> li {
+			@include transition5;
+			%color {
+				background-color: transparent;
+				color: $main;
+			}
+			> a {
+				padding: 8px 15px;
+				color: #fff;
+				font-size: 20px;
+				@include transition5;
+				&:hover {
+					@extend %color;
+				}
+				&:focus {
+					@extend :hover
+				}
+			}
+			&::after {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				background-color: #fff;
+				@include transition2;
+				@include opacity(.3);
+				@include transform(scale(0));
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+			}
+			&:hover {
+				&::after {
+					@include transform(scale(1));
+				}
+			}
+			&.active {
+				a {
+					@extend %color;
+				}
+				a:hover {
+					@extend %color;
+				}
+				&::after {
+					@include transform(scale(1));
+				}
+			}
+		}
+		@media (min-width: 992px) {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			text-align: center;
+			> li {
+				display: inline-block;
+				float: none;
+			}
+		}
+	}
+	.nav-tabs {
+		border: none;
+		> li {
+			> a {
+				border: none;
+				&:hover {
+					border: none;
+				}
+				&:focus {
+					border: none;
+				}
+			}
+
+		}
+	}
+	.navbar-nav {
+		.active {
+			a {
+				&:focus {
+					color: $main;
+					background-color: transparent;
+				}
+			}
+		}
+	}
+	.navbar-right {
+		margin-top: 30px;
+		li {
+			a {
+				@include transition5;
+				color: $main;
+				font-weight: 700;
+				font-size: 20px;
+				padding: 8px 15px;
+				&:hover {
+					color: $main;
+				}
+			}
+		}
+	}
+	@media (max-width: 850px) {
+		.navbar-header {
+			.navbar-brand {
+				img {
+					height: 40px;
+				}
+			}
+		}
+		.navbar-center {
+			margin-top: 20px;
+			li {
+				> a {
+					font-size: 14px;
+					text-align: left;
+				}
+			}
+		}
+		.navbar-right {
+			margin-top: 20px;
+			li {
+				> a {
+					font-size: 14px;
+					text-align: left;
+				}
+			}
+		}
+	}
+}
+
+//首页
+#home {
+	.carousel-indicators {
+		bottom: 18%;
+	}
+	.carousel-inner {
+		.item {
+			background: no-repeat center center fixed;
+			opacity: .5;
+			@include transition(opacity 1.5s);
+			@include background-size(cover);
+			.carousel-caption {
+				top: 36%;
+				.title {
+					@extend .keyword;
+					font-size: 60px;
+					margin: 20px 0 10px;
+				}
+				.desc {
+					font-size: 36px;
+					font-style: italic;
+					font-weight: bold;
+					color: #fff;
+					margin: 20px 0 10px;
+				}
+				.detail {
+					color: #fff;
+				}
+				@media (max-width: 576px) {
+					.title {
+						font-size: 30px;
+					}
+					.desc {
+						font-size: 16px;
+					}
+				}
+			}
+		}
+		.active{
+			opacity: 1;
+			&.left,
+			&.right{
+				left: 0;
+				opacity: .8;
+			}
+		}
+		.next.left,
+		.prev.right {
+			opacity: 1;
+		}
+		//循环绑定轮播图
+		@for $i from 1 to 6 {
+			.item:nth-of-type(#{$i}) {
+				background-image: url("./../img/slide#{$i}.jpg");
+			}
+		}
+	}
+}
+
+//循环设置背个栏目的背景
+@each $id in about, service, solution, product, contact {
+	##{$id} {
+		background: url("./../img/bg-#{$id}.jpg") no-repeat center center;
+		@include background-size(cover);
+		.container {
+			padding-top: 15%;
+		}
+	}
+}
+
+//栏目通用模块
+.section-common{
+	.title-section {
+		text-align: center;
+		font-size: 30px;
+		font-weight: 700;
+		font-style: italic;
+		color: #fff;
+		margin-bottom: 20px;
+		@include transition3;
+		@media (max-width: 790px)  {
+			font-size: 18px;
+		}
+	}
+	.tip-section{
+		text-align: center;
+		margin-bottom: 30px;
+		.glyphicon{
+			color: #bbb;
+			font-size: 30px;
+		}
+		@include transition3;
+	}
+	.item-section{
+		text-align: center;
+		padding: 15px 0;
+		height: 140px;
+		overflow: hidden;
+		margin-bottom: 36px;
+		cursor: pointer;
+		position: relative;
+		@include transition3;
+		&:hover{
+			.desc{
+				@include transform(scale(1));
+			}
+		}
+		.pic{
+			text-align: center;
+			display: block;
+			height: 48px;
+			line-height: 48px;
+			color: $main;
+			.glyphicon{
+				display: inline-block;
+				width: 48px;
+				height: 48px;
+				line-height: 48px;
+				font-size: 48px;
+			}
+		}
+		.title{
+			padding: 15px 0;
+			@include transition3;
+			a{
+				font-size: 24px;
+				color: #fff;
+				font-weight: 700;
+			}
+		}
+		.desc{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			text-align: left;
+			padding: 12px;
+			background-color: rgba(236,114,38,.9);
+			@include transition(all .3s ease-out);
+			@include transform(scale(0));
+			@include box-size;
+			a{
+				color: #fff;
+				font-size: 14px;
+				line-height: 18px;
+			}
+		}
+	}
+	@media (max-width: 991px)  {
+		.tip-section{
+			margin-bottom: 15px;
+		}
+		.item-section{
+			height: auto;
+			margin-bottom: 0;
+			padding-left: 30%;
+			@include box-size;
+			text-align: left;
+			.pic{
+				display: inline-block;
+				margin-right: 16px;
+			}
+			.title{
+				padding: 0;
+				display: inline-block;
+			}
+		}
+	}
+	@media (max-width: 790px)  {
+		.item-section{
+			height: auto;
+			margin-bottom: 0;
+			padding-top:5px;
+			border-bottom: 5px;
+			.pic{
+				display: inline-block;
+				margin-right: 16px;
+			}
+			.title{
+				a{
+					font-size: 18px;
+				}
+			}
+		}
+	}
+	@media (max-width: 768px)  {
+		.item-section{
+			&:hover{
+				background-color: $main;
+				.pic{
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+
+//关于
+#about {
+	.nav-tabs{
+		border-bottom: none;
+		margin-bottom: 45px;
+		li{
+			a{
+				border: none;
+				color: #fff;
+				background-color: $main;
+				@include opacity(.6);
+			}
+			&::after{
+				position: absolute;
+				bottom: -11px;
+				left:50%;
+				margin-left: -7px;
+				font-size: 14px;
+				line-height: 14px;
+				content: '\25BC';
+				color: $main;
+				font-weight: 700;
+				@include opacity(.6);
+			}
+			&.more{
+				a{
+					@include opacity(.8);
+				}
+				&::after{
+					content: '';
+				}
+			}
+		}
+		.active{
+			a{
+				@include opacity(1);
+			}
+			&::after{
+				@include opacity(1);
+			}
+		}
+	}
+	.tab-content{
+		color: #fff;
+		font-size: 14px;
+		line-height: 20px;
+		@at-root #intro{
+			p{
+				margin-bottom: 20px;
+			}
+		}
+		@at-root #course{
+			li{
+				margin-bottom: 10px;
+			}
+		}
+		dt{
+			color: $main;
+			margin: 6px 0;
+			font-size: 16px;
+		}
+	}
+}
+
+//服务
+#service {
+
+}
+
+//方案
+#solution {
+	.row{
+		text-align: center;
+		img{
+			height: 100px;
+			margin-bottom: 10px;
+		}
+		p{
+			margin-bottom: 10px;
+			color: $main;
+			font-weight: 600;
+			font-size: 14px;
+			text-align: center;
+			@media (max-width: 768px) {
+				margin-bottom: 20px;
+			}
+		}
+	}
+}
+
+//产品
+#product {
+
+}
+
+//联系
+#contact {
+	.row{
+		>div{
+			margin-bottom: 20px;
+		}
+		.btn{
+			margin-top: 20px;
+			color: #fff;
+			@include transition2;
+			@media (max-width:790px) {
+				padding: 6px 12px;
+				font-size: 14px;
+				line-height: 1.42857143;
+			}
+		}
+	}
+	color: #fff;
+	p{
+		margin-bottom: 10px;
+		font-size: 14px;
+
+	}
+	.wechat{
+		margin-bottom: 10px;
+	}
+}
+
+//模态框
+.modal{
+	.modal-dialog{
+		.modal-title{
+			color: $main ;
+			font-size: 20px;
+			padding: 5px 0 ;
+			font-weight: 600;
+		}
+	}
+	.modal-body{
+		p{
+			margin-bottom: 15px;
+		}
+		label{
+			display: inline-block;
+			width: 110px;
+			text-align: right;
+			font-weight: 400;
+			padding: 0 20px;
+		}
+		input{
+			border: 1px solid #ccc;
+			width: 65%;
+			padding: 5px 10px;
+		}
+		textarea{
+			border: 1px solid #ccc;
+			font-size: 14px;
+			width: 65%;
+			height: 10em;
+			padding: 5px 10px;
+		}
+	}
+	.modal-footer{
+		text-align: center;
+	}
+}
+
+

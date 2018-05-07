@@ -1,0 +1,79 @@
+@charset "UTF-8";
+//混合库
+@import "mixins/cjj";
+//变量
+@import "mixins/variable";
+
+//主样式
+#topBar {
+	.container-fluid {
+		height: 176px;
+		background: url("./../img/solution-bg.jpg") no-repeat center center;
+		@include background-size(cover);
+		@include transition5;
+	}
+	@media (max-width: 992px) {
+		.container-fluid {
+			height: 130px;
+		}
+	}
+	@media (max-width: 850px) {
+		.container-fluid {
+			height: 90px;
+		}
+	}
+}
+section {
+	.container {
+		&> .title {
+			margin: 50px;
+			color: $main;
+			font-size: 40px;
+			line-height: 40px;
+			text-align: center;
+			font-weight: 700;
+		}
+		&> .time,
+		&> .auther {
+			color: #3c3c3c;
+			font-size: 14px;
+			line-height: 20px;
+			text-align: center;
+		}
+		.desc{
+			margin-top: 20px;
+			.title{
+				font-size: 16px;
+				padding: 10px 0;
+				background-color: #cccccc;
+				margin: 20px 0;
+				text-indent: 1em;
+			}
+			p{
+				font-size: 14px;
+				line-height: 22px;
+			}
+		}
+
+	}
+}
+
+footer{
+	text-align: center;
+	height: 60px;
+	margin-top: 50px;
+	line-height: 60px;
+	background-color: rgba(0,0,0,.6);
+	color: #fff;
+	.icp-link{
+		color: #fff;
+		&:hover{
+			color: $main;
+		}
+	}
+	span{
+		padding: 0 5px;
+		color: #9e9e9e;
+	}
+}
+

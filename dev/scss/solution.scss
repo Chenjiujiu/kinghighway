@@ -1,0 +1,48 @@
+@charset "UTF-8";
+//混合库
+@import "mixins/cjj";
+//变量
+@import "mixins/variable";
+//公共
+@import "public/topNav";
+//主样式
+#topBar {
+	.container-fluid {
+		background: url("./../img/solution-bg.jpg") no-repeat center center;
+	}
+}
+section {
+	padding: 10px 0 100px;
+	.title{
+		color: $main;
+		font-size: 28px;
+		padding-bottom: 20px;
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 20px;
+	}
+	.thumbnail{
+		&:hover{
+			border-color: $main;
+		}
+		.title{
+			color: $main;
+			font-size: 20px;
+			font-weight: 600;
+			padding: 10px 0;
+		}
+		.desc{
+			font-size: 14px;
+			height: 4.1em;
+			overflow: hidden;
+			text-indent: 1em;
+		}
+		.btn{
+			margin-top: 5px;
+			padding: 2px 3px;
+			display: block;
+			a{
+				color: #fff;
+			}
+		}
+	}
+}

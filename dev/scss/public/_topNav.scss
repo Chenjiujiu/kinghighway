@@ -1,0 +1,220 @@
+@charset "UTF-8";
+//导航
+.nav-khw {
+	background-color: rgba(0, 0, 0, .4);
+	border: none;
+	text-align: center;
+	@include transition5;
+	.navbar-header {
+		.navbar-toggle {
+			margin-top: 20px;
+			border: transparent;
+			padding: 12px 15px;
+			@include transition3;
+			.icon-bar {
+				background-color: #fff;
+			}
+			&:hover {
+				background-color: rgba(255, 255, 255, .2);
+			}
+			&:focus {
+				@extend :hover
+			}
+		}
+		.navbar-brand {
+			height: auto;
+			@include transition5;
+			img {
+				height: 50px;
+				@include transition5;
+			}
+		}
+	}
+	.navbar-collapse {
+		border: none;
+	}
+	.navbar-center {
+		margin-top: 30px;
+		text-align: center;
+		@include transition5;
+		> li {
+			@include transition5;
+			%color {
+				background-color: transparent;
+				color: $main;
+			}
+			> a {
+				padding: 8px 15px;
+				color: #fff;
+				font-size: 20px;
+				@include transition5;
+				&:hover {
+					@extend %color;
+				}
+				&:focus {
+					@extend :hover
+				}
+			}
+			&::after {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 100%;
+				background-color: #fff;
+				@include transition2;
+				@include opacity(.3);
+				@include transform(scale(0));
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+			}
+			&:hover {
+				&::after {
+					@include transform(scale(1));
+				}
+			}
+			&.active {
+				a {
+					@extend %color;
+				}
+				a:hover {
+					@extend %color;
+				}
+				&::after {
+					@include transform(scale(1));
+				}
+			}
+		}
+		@media (min-width: 992px) {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			text-align: center;
+			> li {
+				display: inline-block;
+				float: none;
+			}
+		}
+	}
+	.nav-tabs {
+		border: none;
+		> li {
+			> a {
+				border: none;
+				&:hover {
+					border: none;
+				}
+				&:focus {
+					border: none;
+				}
+			}
+
+		}
+	}
+	.navbar-nav {
+		.active {
+			a {
+				&:focus {
+					color: $main;
+					background-color: transparent;
+				}
+			}
+		}
+	}
+	.navbar-right {
+		margin-top: 30px;
+		li {
+			a {
+				@include transition5;
+				color: $main;
+				font-weight: 700;
+				font-size: 20px;
+				padding: 8px 15px;
+				&:hover {
+					color: $main;
+				}
+			}
+		}
+	}
+	@media (max-width: 850px) {
+		.navbar-header {
+			.navbar-brand {
+				img {
+					height: 40px;
+				}
+			}
+		}
+		.navbar-center {
+			margin-top: 20px;
+			li {
+				> a {
+					font-size: 14px;
+					text-align: left;
+				}
+			}
+		}
+		.navbar-right {
+			margin-top: 20px;
+			li {
+				> a {
+					font-size: 14px;
+					text-align: left;
+				}
+			}
+		}
+	}
+}
+//页头图
+#topBar {
+	margin-top: 80px;
+	.container-fluid {
+		height: 176px;
+		background: url("./../img/about-bg.jpg") no-repeat center center;
+		@include background-size(cover);
+		@include transition5;
+	}
+	@media (max-width: 992px) {
+		.container-fluid {
+			height: 130px;
+		}
+	}
+	@media (max-width: 850px) {
+		margin-top: 70px;
+		.container-fluid {
+			height: 90px;
+		}
+	}
+}
+//路径导航
+.breadcrumb {
+	padding-top: 50px;
+	background: none;
+	font-size: 14px;
+	.active {
+		color: $main;
+	}
+	.tab-content {
+		&::before {
+			display: none;
+		}
+	}
+}
+//页脚
+footer{
+	text-align: center;
+	height: 60px;
+	line-height: 60px;
+	background-color: rgba(0,0,0,.6);
+	color: #fff;
+	.icp-link{
+			color: #fff;
+		&:hover{
+			color: $main;
+		}
+	}
+	span{
+		padding: 0 5px;
+		color: #9e9e9e;
+	}
+}
